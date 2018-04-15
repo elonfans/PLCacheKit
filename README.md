@@ -1,51 +1,58 @@
 # PLCacheKit
-目的：解决文件损坏导致的连续启动闪退问题
 
-## 项目接入
+## Purpose
 
+To solve the problem of continuous startup crash caused by file damage.
 
+## Support 
 
-### 1. 连续闪退监控
+iOS 6.0+
+
+## Usage
+
+#### 1. continuous crash monitoring
 ```
-// 缓存配置
+// Cache Config
 PLCacheConfig *config = [[PLCacheConfig alloc] initWithCrashTimeout:3.0 crashCountWhenCleanNormalCache:2 crashCountWhenCleanSignificantCache:3];
-// 开始启动闪退监控，根据配置自动清理损坏文件
+// Start Crash Monitoring, Clean Up The Corrupted Files According To The Configuration
 [PLCacheMoniter startWithConfig:config];
 ```
 
-### 2. 规范缓存目录
+#### 2. Standard Cache Directory
 ```
-// 注册缓存信息
+// Register Cache Info
 BOOL success = [PLCacheDirectory registerForKey:testKey level:CacheLevelNormal pathType:CachePathTypeDocument relativeOriginPath:@"Documents/12345"];
-NSLog(@"注册结果 %ld", (NSInteger)success);
-// 根绝 Key 获取缓存相对路径
+NSLog(@"Regisstration results %ld", (NSInteger)success);
+// Get Cache Relative Path
 NSLog(@"path %@", [PLCacheDirectory pathForKey:testKey]);
 ```
 
-## 核心业务逻辑
+## Core Logic
 
-监控连续启动闪退次数，当达到 m1 次时清理非重要缓存文件，达到 m2 次时清理重要缓存文件以解决文件损坏导致的连续启动闪退问题。根据缓存重要性和是否业务下次启动所需，获取规范化的缓存目录，并且支持旧业务的缓存数据迁移。
+Monitor the numbser of continuous startup crash, clean non-important cache files or importance cache files according to the number of startup crash.
 
-## 相关类介绍
+Get the normalized cache directory based on the cache importance and support the cache data migration of the old business.
+
+## Related Class
 
 ```
 /*
- 监控启动闪退次数，达到配置条件自动清理相应缓存目录
+Monitor the numbser of continuous startup crash
  */
 #import "PLCacheMoniter.h"
 
 /*
- 规范缓存目录，维护缓存目录映射表
+Standardize the cache directory and maintain the cache directory mapping plist file
  */
 #import "PLCacheDirectory.h"
-
+ 
 /*
- 缓存配置类
+Cache Configuration
  */
 #import "PLCacheConfig.h"
 
 /*
- 工具类
+Tool Class
  */
 #import "PLCacheTool.h"
 ```
