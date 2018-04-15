@@ -1,6 +1,6 @@
 # PLCacheKit
 
-## Purpose
+## Abstract
 
 To solve the problem of continuous startup crash caused by file damage.
 
