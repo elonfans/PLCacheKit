@@ -59,5 +59,9 @@ Tool Class
 
 ## License
 
-YTKNetwork is available under the MIT license. See the LICENSE file for more info.
+PLCacheKit is available under the MIT license. See the LICENSE file for more info.
+
+## Contact
+
+Email : pauleyliu@gmail.com
 
