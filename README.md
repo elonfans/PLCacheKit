@@ -5,7 +5,7 @@
 
 
 
-### 1.连续闪退监控
+### 1. 连续闪退监控
 ```
 // 缓存配置
 PLCacheConfig *config = [[PLCacheConfig alloc] initWithCrashTimeout:3.0 crashCountWhenCleanNormalCache:2 crashCountWhenCleanSignificantCache:3];
@@ -13,7 +13,7 @@ PLCacheConfig *config = [[PLCacheConfig alloc] initWithCrashTimeout:3.0 crashCou
 [PLCacheMoniter startWithConfig:config];
 ```
 
-### 2.规范缓存目录
+### 2. 规范缓存目录
 ```
 // 注册缓存信息
 BOOL success = [PLCacheDirectory registerForKey:testKey level:CacheLevelNormal pathType:CachePathTypeDocument relativeOriginPath:@"Documents/12345"];
